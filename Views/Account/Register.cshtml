@@ -1,0 +1,109 @@
+﻿@* @model CarsProject.Models.RegisterUserViewModel *@
+
+@* @{ *@
+@*     ViewData["Title"] = "Register"; *@
+@* } *@
+
+@* <h1>Register</h1> *@
+
+
+@* <hr /> *@
+@* <div class="row"> *@
+@*     <div class="col-md-4"> *@
+@*         <form asp-action="Register" method="post"> *@
+@*             <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="UserName" class="control-label"></label> *@
+@*                 <input asp-for="UserName" class="form-control" /> *@
+@*                 <span asp-validation-for="UserName" class="text-danger"></span> *@
+@*             </div> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="Password" class="control-label"></label> *@
+@*                 <input asp-for="Password" class="form-control" /> *@
+@*                 <span asp-validation-for="Password" class="text-danger"></span> *@
+@*             </div> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="Email" class="control-label"></label> *@
+@*                 <input asp-for="Email" class="form-control" /> *@
+@*                 <span asp-validation-for="Email" class="text-danger"></span> *@
+@*             </div> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="ConfirmPassword" class="control-label"></label> *@
+@*                 <input asp-for="ConfirmPassword" class="form-control" /> *@
+@*                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span> *@
+@*             </div> *@
+@*             <div class="form-group"> *@
+@*                 <input type="submit" value="Register" class="btn btn-primary" /> *@
+
+@*             </div> *@
+@*         </form> *@
+@*     </div> *@
+@* </div> *@
+
+@* <div> *@
+@*     <a asp-action="Login" asp-controller="Account">Already have an account? Log in</a> *@
+
+@* </div> *@
+
+@* @section Scripts { *@
+@*     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} *@
+@* } *@
+@* <script src="~/lib/jquery/dist/jquery.js"></script> *@
+@* <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script> *@
+@* <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script> *@
+@model CarsProject.Models.RegisterUserViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2 class="text-center">Register</h2>
+<hr />
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control form-control-sm" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control form-control-sm" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control form-control-sm" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control form-control-sm" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+           
+
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary w-100" />
+            </div>
+        </form>
+
+        <div class="text-center mt-3">
+            <a asp-action="Login" asp-controller="Account">Already have an account? Log in</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -8,33 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CarsProject.Migrations
 {
     /// <inheritdoc />
-    public partial class seedData : Migration
+    public partial class SeedCarData : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.InsertData(
-                table: "Categories",
-                columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 1, "Sedan" },
-                    { 2, "SUV" },
-                    { 3, "Hatchback" },
-                    { 4, "Luxury" },
-                    { 5, "Sports" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "Id", "Email", "Password", "UserName" },
-                values: new object[,]
-                {
-                    { 1, "admin@example.com", "admin123", "admin" },
-                    { 2, "aya@example.com", "aya123", "aya" },
-                    { 3, "mohamed@example.com", "mohe123", "mohamed" }
-                });
-
             migrationBuilder.InsertData(
                 table: "Cars",
                 columns: new[] { "Id", "CategoryId", "Color", "Condition", "Description", "ImageUrl", "Name", "Price", "Status", "Transmission" },
@@ -91,49 +68,36 @@ namespace CarsProject.Migrations
                     { 49, 5, "Blue", "Used", "High quality vehicle.", "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg", "Volvo S60 2024", 31700, "Sold", "Manual" },
                     { 50, 1, "Black", "New", "High quality vehicle.", "https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg", "Peugeot 508 2015", 32000, "Available", "Automatic" }
                 });
-
-            migrationBuilder.InsertData(
-                table: "Orders",
-                columns: new[] { "Id", "OrderDate", "UserId" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(2025, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 2, new DateTime(2025, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 3 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "CartItems",
-                columns: new[] { "Id", "CarId", "Quantity", "UserId" },
-                values: new object[,]
-                {
-                    { 1, 4, 1, 2 },
-                    { 2, 15, 2, 3 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "OrderItems",
-                columns: new[] { "Id", "CarId", "OrderId", "Price", "Quantity" },
-                values: new object[,]
-                {
-                    { 1, 5, 1, 30000, 1 },
-                    { 2, 10, 1, 17000, 2 },
-                    { 3, 20, 2, 37000, 1 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Reviews",
-                columns: new[] { "Id", "CarId", "Content", "Rating", "UserId" },
-                values: new object[,]
-                {
-                    { 1, 1, "Great car!", 5, 2 },
-                    { 2, 2, "Smooth ride", 4, 3 },
-                    { 3, 3, "Worth the price", 4, 1 }
-                });
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DeleteData(
+                table: "Cars",
+                keyColumn: "Id",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "Cars",
+                keyColumn: "Id",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "Cars",
+                keyColumn: "Id",
+                keyValue: 3);
+
+            migrationBuilder.DeleteData(
+                table: "Cars",
+                keyColumn: "Id",
+                keyValue: 4);
+
+            migrationBuilder.DeleteData(
+                table: "Cars",
+                keyColumn: "Id",
+                keyValue: 5);
+
             migrationBuilder.DeleteData(
                 table: "Cars",
                 keyColumn: "Id",
@@ -153,6 +117,11 @@ namespace CarsProject.Migrations
                 table: "Cars",
                 keyColumn: "Id",
                 keyValue: 9);
+
+            migrationBuilder.DeleteData(
+                table: "Cars",
+                keyColumn: "Id",
+                keyValue: 10);
 
             migrationBuilder.DeleteData(
                 table: "Cars",
@@ -177,6 +146,11 @@ namespace CarsProject.Migrations
             migrationBuilder.DeleteData(
                 table: "Cars",
                 keyColumn: "Id",
+                keyValue: 15);
+
+            migrationBuilder.DeleteData(
+                table: "Cars",
+                keyColumn: "Id",
                 keyValue: 16);
 
             migrationBuilder.DeleteData(
@@ -193,6 +167,11 @@ namespace CarsProject.Migrations
                 table: "Cars",
                 keyColumn: "Id",
                 keyValue: 19);
+
+            migrationBuilder.DeleteData(
+                table: "Cars",
+                keyColumn: "Id",
+                keyValue: 20);
 
             migrationBuilder.DeleteData(
                 table: "Cars",
@@ -343,136 +322,6 @@ namespace CarsProject.Migrations
                 table: "Cars",
                 keyColumn: "Id",
                 keyValue: 50);
-
-            migrationBuilder.DeleteData(
-                table: "CartItems",
-                keyColumn: "Id",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "CartItems",
-                keyColumn: "Id",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "OrderItems",
-                keyColumn: "Id",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "OrderItems",
-                keyColumn: "Id",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "OrderItems",
-                keyColumn: "Id",
-                keyValue: 3);
-
-            migrationBuilder.DeleteData(
-                table: "Reviews",
-                keyColumn: "Id",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "Reviews",
-                keyColumn: "Id",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "Reviews",
-                keyColumn: "Id",
-                keyValue: 3);
-
-            migrationBuilder.DeleteData(
-                table: "Cars",
-                keyColumn: "Id",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "Cars",
-                keyColumn: "Id",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "Cars",
-                keyColumn: "Id",
-                keyValue: 3);
-
-            migrationBuilder.DeleteData(
-                table: "Cars",
-                keyColumn: "Id",
-                keyValue: 4);
-
-            migrationBuilder.DeleteData(
-                table: "Cars",
-                keyColumn: "Id",
-                keyValue: 5);
-
-            migrationBuilder.DeleteData(
-                table: "Cars",
-                keyColumn: "Id",
-                keyValue: 10);
-
-            migrationBuilder.DeleteData(
-                table: "Cars",
-                keyColumn: "Id",
-                keyValue: 15);
-
-            migrationBuilder.DeleteData(
-                table: "Cars",
-                keyColumn: "Id",
-                keyValue: 20);
-
-            migrationBuilder.DeleteData(
-                table: "Orders",
-                keyColumn: "Id",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "Orders",
-                keyColumn: "Id",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "Users",
-                keyColumn: "Id",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "Categories",
-                keyColumn: "Id",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "Categories",
-                keyColumn: "Id",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "Categories",
-                keyColumn: "Id",
-                keyValue: 3);
-
-            migrationBuilder.DeleteData(
-                table: "Categories",
-                keyColumn: "Id",
-                keyValue: 4);
-
-            migrationBuilder.DeleteData(
-                table: "Categories",
-                keyColumn: "Id",
-                keyValue: 5);
-
-            migrationBuilder.DeleteData(
-                table: "Users",
-                keyColumn: "Id",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "Users",
-                keyColumn: "Id",
-                keyValue: 3);
         }
     }
 }

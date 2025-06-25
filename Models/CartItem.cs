@@ -10,7 +10,7 @@ namespace CarsProject.Models
         public int CarId { get; set; }
         public Car? Car { get; set; }
         [ForeignKey("User")]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public User? User { get; set; }
         public int? Quantity { get; set; }
     }

@@ -1,5 +1,6 @@
 using CarsProject.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace CarsProject
 {
@@ -14,6 +15,9 @@ namespace CarsProject
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<CarsContext>()
+                .AddDefaultTokenProviders();
 
             var app = builder.Build();
 

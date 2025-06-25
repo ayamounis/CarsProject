@@ -1,14 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 
 namespace CarsProject.Models
 {
-    public class CarsContext : DbContext
+    public class CarsContext : IdentityDbContext<User>
     {
         public DbSet<Car> Cars { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Review> Reviews { get; set; }
-        public DbSet<User> Users { get; set; }
+        //public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
 
@@ -26,6 +28,7 @@ namespace CarsProject.Models
         //Seed Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             #region Seed Car  ..
             modelBuilder.Entity<Car>().HasData(
                        new Car { Id = 1, Name = "Toyota Corolla 2022", Description = "Reliable and efficient sedan.", ImageUrl = "https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg", Price = 22000, Condition = "New", Status = "Available", Color = "White", Transmission = "Automatic", CategoryId = 1 },
@@ -97,41 +100,41 @@ namespace CarsProject.Models
             #endregion
 
             #region Seed User
-            modelBuilder.Entity<User>().HasData(
-                new User { Id = 1, UserName = "admin", Password = "admin123", Email = "admin@example.com" },
-                new User { Id = 2, UserName = "aya", Password = "aya123", Email = "aya@example.com" },
-                new User { Id = 3, UserName = "mohamed", Password = "mohe123", Email = "mohamed@example.com" }
-            );
+            //modelBuilder.Entity<User>().HasData(
+            //    new User { Id = 1, UserName = "admin", Password = "admin123", Email = "admin@example.com" },
+            //    new User { Id = 2, UserName = "aya", Password = "aya123", Email = "aya@example.com" },
+            //    new User { Id = 3, UserName = "mohamed", Password = "mohe123", Email = "mohamed@example.com" }
+            //);
             #endregion
 
             #region Seed Review
-            modelBuilder.Entity<Review>().HasData(
-                new Review { Id = 1, Content = "Great car!", Rating = 5, CarId = 1, UserId = 2 },
-                new Review { Id = 2, Content = "Smooth ride", Rating = 4, CarId = 2, UserId = 3 },
-                new Review { Id = 3, Content = "Worth the price", Rating = 4, CarId = 3, UserId = 1 }
-            );
+            //modelBuilder.Entity<Review>().HasData(
+            //    new Review { Id = 1, Content = "Great car!", Rating = 5, CarId = 1, UserId = 2 },
+            //    new Review { Id = 2, Content = "Smooth ride", Rating = 4, CarId = 2, UserId = 3 },
+            //    new Review { Id = 3, Content = "Worth the price", Rating = 4, CarId = 3, UserId = 1 }
+            //);
             #endregion
 
             #region Seed Order
-            modelBuilder.Entity<Order>().HasData(
-                new Order { Id = 1, OrderDate = new DateTime(2025, 6, 1), UserId = 2 },
-                new Order { Id = 2, OrderDate = new DateTime(2025, 6, 10), UserId = 3 }
-            );
+            //modelBuilder.Entity<Order>().HasData(
+            //    new Order { Id = 1, OrderDate = new DateTime(2025, 6, 1), UserId = 2 },
+            //    new Order { Id = 2, OrderDate = new DateTime(2025, 6, 10), UserId = 3 }
+            //);
             #endregion
 
             #region Seed OrderItem
-            modelBuilder.Entity<OrderItem>().HasData(
-                new OrderItem { Id = 1, OrderId = 1, CarId = 5, Quantity = 1, Price = 30000 },
-                new OrderItem { Id = 2, OrderId = 1, CarId = 10, Quantity = 2, Price = 17000 },
-                new OrderItem { Id = 3, OrderId = 2, CarId = 20, Quantity = 1, Price = 37000 }
-            );
+            //modelBuilder.Entity<OrderItem>().HasData(
+            //    new OrderItem { Id = 1, OrderId = 1, CarId = 5, Quantity = 1, Price = 30000 },
+            //    new OrderItem { Id = 2, OrderId = 1, CarId = 10, Quantity = 2, Price = 17000 },
+            //    new OrderItem { Id = 3, OrderId = 2, CarId = 20, Quantity = 1, Price = 37000 }
+            //);
             #endregion
 
             #region Seed CartItem
-            modelBuilder.Entity<CartItem>().HasData(
-                new CartItem { Id = 1, CarId = 4, UserId = 2, Quantity = 1 },
-                new CartItem { Id = 2, CarId = 15, UserId = 3, Quantity = 2 }
-            );
+            //modelBuilder.Entity<CartItem>().HasData(
+            //    new CartItem { Id = 1, CarId = 4, UserId = 2, Quantity = 1 },
+            //    new CartItem { Id = 2, CarId = 15, UserId = 3, Quantity = 2 }
+            //);
             #endregion
 
 

@@ -1,6 +1,43 @@
 ﻿@{
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="container mt-5 mb-5">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h2 class="card-title mb-4 text-primary"><i class="fas fa-user-shield"></i> Privacy Policy</h2>
+
+            <p>
+                At <strong>CarZone</strong>, we value your privacy. This policy explains how we collect, use, and protect your personal information.
+            </p>
+
+            <h4 class="mt-4 text-dark">1. Information We Collect</h4>
+            <ul>
+                <li>Basic information such as name, email, and phone number</li>
+                <li>Car preferences and browsing activity</li>
+                <li>Transactional data when placing orders</li>
+            </ul>
+
+            <h4 class="mt-4 text-dark">2. How We Use Your Information</h4>
+            <p>We use your data to:</p>
+            <ul>
+                <li>Provide car recommendations</li>
+                <li>Process purchases and manage your account</li>
+                <li>Improve website features and user experience</li>
+            </ul>
+
+            <h4 class="mt-4 text-dark">3. Your Rights</h4>
+            <p>You have the right to access, correct, or delete your personal data at any time by contacting us.</p>
+
+            <h4 class="mt-4 text-dark">4. Contact</h4>
+            <p>If you have questions, email us at <a href="mailto:support@carzone.com">support@carzone.com</a></p>
+
+            <div class="mt-4">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

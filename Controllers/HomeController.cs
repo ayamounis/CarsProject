@@ -21,9 +21,12 @@ namespace CarsProject.Controllers
             var featuredCars = _context.Cars
                 .Include(c => c.Category)
                 .Where(c => c.Status == "Available")
-                .OrderByDescending(c => c.Id)
+                .GroupBy(c => c.Name)
+                .Select(g => g.First())
+                .OrderBy(c => Guid.NewGuid())
                 .Take(6)
                 .ToList();
+
 
             ViewBag.TotalCars = _context.Cars.Count(c => c.Status == "Available");
             ViewBag.TotalCategories = _context.Categories.Count();

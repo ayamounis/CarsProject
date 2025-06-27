@@ -4,40 +4,61 @@
 }
 
 <div class="container mt-5 mb-5">
-    <div class="card shadow-lg border-0">
-        <div class="card-body">
-            <h2 class="card-title text-primary mb-4"><i class="fas fa-car-side"></i> About CarZone</h2>
+    <h2 class="text-center text-primary mb-5"><i class="fas fa-car-side"></i> About CarZone</h2>
 
-            <p>
-                <strong>CarZone</strong> is more than just a car store — it’s a community built for car lovers and everyday drivers alike. 
-                We specialize in helping customers find reliable vehicles that suit their lifestyle and budget.
-            </p>
-
-            <h4 class="mt-4">Who We Are</h4>
-            <p>
-                Founded by passionate automotive experts, CarZone is dedicated to making your car buying journey simple, transparent, and enjoyable. 
-                From modern electric cars to trusted family vehicles, we’ve got something for everyone.
-            </p>
-
-            <h4 class="mt-4">What Sets Us Apart</h4>
-            <ul>
-                <li><strong>Customer First:</strong> We prioritize your needs and offer full support throughout the buying process.</li>
-                <li><strong>Honest Deals:</strong> No hidden fees, no tricks — just fair prices and real value.</li>
-                <li><strong>Certified Cars:</strong> Every vehicle is checked and verified before being listed.</li>
-                <li><strong>Fast & Easy Process:</strong> From browsing to checkout, everything is designed for your convenience.</li>
-            </ul>
-
-            <h4 class="mt-4">Join the CarZone Experience</h4>
-            <p>
-                Whether you’re buying your first car or upgrading to something better, CarZone is here to help. 
-                Explore our collection, read reviews, and get ready to hit the road in style.
-            </p>
-
-            <div class="mt-4">
-                <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary">
-                    <i class="fas fa-arrow-left"></i> Back to Home
-                </a>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card shadow h-100 border-0">
+                <div class="card-body">
+                    <h4 class="card-title text-primary"><i class="fas fa-users"></i> Who We Are</h4>
+                    <p>
+                        Founded by passionate automotive experts, CarZone is dedicated to making your car buying journey simple, transparent, and enjoyable.
+                        From modern electric cars to trusted family vehicles, we’ve got something for everyone.
+                    </p>
+                </div>
             </div>
         </div>
+
+        <div class="col-md-6">
+            <div class="card shadow h-100 border-0">
+                <div class="card-body">
+                    <h4 class="card-title text-success"><i class="fas fa-award"></i> What Sets Us Apart</h4>
+                    <ul class="mb-0">
+                        <li><strong>Customer First:</strong> We prioritize your needs and offer full support throughout the buying process.</li>
+                        <li><strong>Honest Deals:</strong> No hidden fees, no tricks — just fair prices and real value.</li>
+                        <li><strong>Certified Cars:</strong> Every vehicle is checked and verified before being listed.</li>
+                        <li><strong>Fast & Easy Process:</strong> From browsing to checkout, everything is designed for your convenience.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow h-100 border-0">
+                <div class="card-body">
+                    <h4 class="card-title text-warning"><i class="fas fa-lightbulb"></i> Our Vision</h4>
+                    <p>
+                        To revolutionize the car buying experience by building a trusted online platform that empowers people to shop confidently, transparently, and affordably — wherever they are.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow h-100 border-0">
+                <div class="card-body">
+                    <h4 class="card-title text-danger"><i class="fas fa-bullseye"></i> Our Mission</h4>
+                    <p>
+                        To connect buyers with high-quality cars and trusted services by offering a simple, honest, and customer-centered marketplace — built for car lovers and real-life drivers alike.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
     </div>
 </div>

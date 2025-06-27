@@ -1,0 +1,178 @@
+﻿@model List<CarsProject.Models.Car>
+@{
+    ViewData["Title"] = "Browse Cars";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Filters Sidebar -->
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-filter"></i> Filters</h5>
+                </div>
+                <div class="card-body">
+                    <form method="get" asp-action="Index">
+                        <!-- Search -->
+                        <div class="mb-3">
+                            <label class="form-label">Search</label>
+                            <input type="text" name="searchString" value="@ViewBag.CurrentSearch"
+                                   class="form-control" placeholder="Search cars...">
+                        </div>
+
+                        <!-- Category Filter -->
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select name="category" class="form-select">
+                                <option value="">All Categories</option>
+                                @if (ViewBag.Categories != null)
+                                {
+                                    @foreach (string cat in ViewBag.Categories)
+                                    {
+                                        <option value="@cat" selected="@(ViewBag.CurrentCategory == cat)">@cat</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+
+                        <!-- Sort By -->
+                        <div class="mb-3">
+                            <label class="form-label">Sort By</label>
+                            <select name="sortBy" class="form-select">
+                                <option value="">Latest</option>
+                                <option value="price_asc" selected="@(ViewBag.CurrentSort == "price_asc")">Price: Low to High</option>
+                                <option value="price_desc" selected="@(ViewBag.CurrentSort == "price_desc")">Price: High to Low</option>
+                                <option value="name" selected="@(ViewBag.CurrentSort == "name")">Name A-Z</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+                        <a asp-action="Index" class="btn btn-outline-secondary w-100 mt-2">Clear All</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cars Grid -->
+        <div class="col-md-9">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Available Cars</h2>
+                <span class="text-muted">@Model.Count cars found</span>
+            </div>
+
+            @if (Model.Any())
+            {
+                <div class="row g-4">
+                    @foreach (var car in Model)
+                    {
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card h-100 car-card">
+                                @if (!string.IsNullOrEmpty(car.ImageUrl))
+                                {
+                                    <img src="@car.ImageUrl" class="card-img-top" alt="@car.Name" style="height: 200px; object-fit: cover;">
+                                }
+                                else
+                                {
+                                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                                        <i class="fas fa-car fa-3x text-muted"></i>
+                                    </div>
+                                }
+
+                                <div class="card-body">
+                                    <h5 class="card-title">@car.Name</h5>
+                                    <p class="card-text text-muted mb-2">@(car.Category?.Name ?? "No Category")</p>
+
+                                    <div class="row text-sm mb-2">
+                                        <div class="col-6">
+                                            <small><i class="fas fa-palette"></i> @car.Color</small>
+                                        </div>
+                                        <div class="col-6">
+                                            <small><i class="fas fa-cog"></i> @car.Transmission</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="row text-sm">
+                                        <div class="col-6">
+                                            <small><i class="fas fa-star"></i> @car.Condition</small>
+                                        </div>
+                                        <div class="col-6">
+                                            <span class="badge bg-success">@car.Status</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer bg-transparent">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="h5 text-primary mb-0">$@car.Price.ToString("N0")</span>
+                                        <a asp-action="Details" asp-route-id="@car.Id" class="btn btn-outline-primary btn-sm">
+                                            View Details
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                @if (ViewBag.TotalPages > 1)
+                {
+                    <nav aria-label="Cars pagination" class="mt-5">
+                        <ul class="pagination justify-content-center">
+                            @if (ViewBag.HasPreviousPage)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" asp-action="Index"
+                                       asp-route-page="@(ViewBag.CurrentPage - 1)"
+                                       asp-route-searchString="@ViewBag.CurrentSearch"
+                                       asp-route-category="@ViewBag.CurrentCategory"
+                                       asp-route-sortBy="@ViewBag.CurrentSort">Previous</a>
+                                </li>
+                            }
+
+                            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                            {
+                                <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                                    <a class="page-link" asp-action="Index"
+                                       asp-route-page="@i"
+                                       asp-route-searchString="@ViewBag.CurrentSearch"
+                                       asp-route-category="@ViewBag.CurrentCategory"
+                                       asp-route-sortBy="@ViewBag.CurrentSort">@i</a>
+                                </li>
+                            }
+
+                            @if (ViewBag.HasNextPage)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" asp-action="Index"
+                                       asp-route-page="@(ViewBag.CurrentPage + 1)"
+                                       asp-route-searchString="@ViewBag.CurrentSearch"
+                                       asp-route-category="@ViewBag.CurrentCategory"
+                                       asp-route-sortBy="@ViewBag.CurrentSort">Next</a>
+                                </li>
+                            }
+                        </ul>
+                    </nav>
+                }
+            }
+            else
+            {
+                <div class="text-center py-5">
+                    <i class="fas fa-search fa-5x text-muted mb-3"></i>
+                    <h3 class="text-muted">No cars found</h3>
+                    <p class="text-muted">Try adjusting your search criteria or browse all cars.</p>
+                    <a asp-action="Index" class="btn btn-primary">View All Cars</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .car-card {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .car-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+</style>

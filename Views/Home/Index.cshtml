@@ -1,8 +1,134 @@
-﻿@{
+﻿@model List<CarsProject.Models.Car>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Hero Section -->
+<div class="hero-section bg-primary text-white py-5 mb-5 rounded">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold mb-3">Welcome to your CAR ZONE !</h1>
+        <p class="lead mb-4">Find your perfect car from our extensive collection</p>
+        <a asp-controller="CarItems" asp-action="Index" class="btn btn-light btn-lg">
+            <i class="fas fa-car"></i> Browse Cars
+        </a>
+    </div>
 </div>
+
+<!-- Statistics Section -->
+<div class="row mb-5">
+    <div class="col-md-4 text-center">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <i class="fas fa-car fa-3x text-primary mb-3"></i>
+                <h3 class="fw-bold">@ViewBag.TotalCars</h3>
+                <p class="text-muted">Available Cars</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <i class="fas fa-list fa-3x text-success mb-3"></i>
+                <h3 class="fw-bold">@ViewBag.TotalCategories</h3>
+                <p class="text-muted">Categories</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <i class="fas fa-users fa-3x text-warning mb-3"></i>
+                <h3 class="fw-bold">@ViewBag.HappyCustomers</h3>
+                <p class="text-muted">Happy Customers</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Featured Cars Section -->
+@if (Model != null && Model.Any())
+{
+    <div class="mb-5">
+        <h2 class="text-center mb-4">Featured Cars</h2>
+        <div class="row g-4">
+            @foreach (var car in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        @if (!string.IsNullOrEmpty(car.ImageUrl))
+                        {
+                            <img src="@car.ImageUrl" class="card-img-top" alt="@car.Name" style="height: 250px; object-fit: cover;">
+                        }
+                        else
+                        {
+                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 250px;">
+                                <i class="fas fa-car fa-3x text-muted"></i>
+                            </div>
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@car.Name</h5>
+                            <p class="card-text text-muted">@(car.Category?.Name ?? "No Category")</p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    @car.Color • @car.Transmission • @car.Condition
+                                </small>
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h5 text-primary mb-0">$@car.Price.ToString("N0")</span>
+                                <a asp-controller="CarItems" asp-action="Details" asp-route-id="@car.Id" class="btn btn-outline-primary btn-sm">
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="text-center mt-4">
+            <a asp-controller="CarItems" asp-action="Index" class="btn btn-primary btn-lg">
+                View All Cars <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="text-center py-5">
+        <i class="fas fa-car fa-5x text-muted mb-3"></i>
+        <h3 class="text-muted">No cars available at the moment</h3>
+        <p class="text-muted">Please check back later for new arrivals!</p>
+    </div>
+}
+
+<!-- Call to Action Section -->
+<div class="bg-light py-5 rounded text-center">
+    <div class="container">
+        <h2 class="mb-3">Ready to Find Your Perfect Car?</h2>
+        <p class="lead mb-4">Browse our extensive collection of quality vehicles</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a asp-controller="CarItems" asp-action="Index" class="btn btn-primary btn-lg">
+                <i class="fas fa-search"></i> Browse Cars
+            </a>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <a asp-controller="Account" asp-action="Register" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-user-plus"></i> Join Us
+                </a>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .card {
+        transition: transform 0.2s;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+</style>

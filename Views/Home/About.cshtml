@@ -1,49 +1,64 @@
 ﻿@{
-    ViewBag.Title = "About Us";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+    ViewData["Title"] = "About Us";
 }
 
-<div class="container py-5">
-    <div class="text-center mb-5">
-        <h1 class="display-4 fw-bold">About Us</h1>
-        <p class="lead text-muted">Empowering knowledge through digital books.</p>
-    </div>
+<div class="container mt-5 mb-5">
+    <h2 class="text-center text-primary mb-5"><i class="fas fa-car-side"></i> About CarZone</h2>
 
     <div class="row g-4">
         <div class="col-md-6">
-            <div class="p-4 border rounded-3 bg-light shadow-sm">
-                <h3 class="mb-3">Our Vision</h3>
-                <p>To be the leading digital bookstore in the Arab world, offering access to quality books for everyone.</p>
+            <div class="card shadow h-100 border-0">
+                <div class="card-body">
+                    <h4 class="card-title text-primary"><i class="fas fa-users"></i> Who We Are</h4>
+                    <p>
+                        Founded by passionate automotive experts, CarZone is dedicated to making your car buying journey simple, transparent, and enjoyable.
+                        From modern electric cars to trusted family vehicles, we’ve got something for everyone.
+                    </p>
+                </div>
             </div>
         </div>
+
         <div class="col-md-6">
-            <div class="p-4 border rounded-3 bg-light shadow-sm">
-                <h3 class="mb-3">Our Mission</h3>
-                <p>We aim to provide a wide collection of high-quality e-books at affordable prices to support continuous learning and development.</p>
+            <div class="card shadow h-100 border-0">
+                <div class="card-body">
+                    <h4 class="card-title text-success"><i class="fas fa-award"></i> What Sets Us Apart</h4>
+                    <ul class="mb-0">
+                        <li><strong>Customer First:</strong> We prioritize your needs and offer full support throughout the buying process.</li>
+                        <li><strong>Honest Deals:</strong> No hidden fees, no tricks — just fair prices and real value.</li>
+                        <li><strong>Certified Cars:</strong> Every vehicle is checked and verified before being listed.</li>
+                        <li><strong>Fast & Easy Process:</strong> From browsing to checkout, everything is designed for your convenience.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow h-100 border-0">
+                <div class="card-body">
+                    <h4 class="card-title text-warning"><i class="fas fa-lightbulb"></i> Our Vision</h4>
+                    <p>
+                        To revolutionize the car buying experience by building a trusted online platform that empowers people to shop confidently, transparently, and affordably — wherever they are.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow h-100 border-0">
+                <div class="card-body">
+                    <h4 class="card-title text-danger"><i class="fas fa-bullseye"></i> Our Mission</h4>
+                    <p>
+                        To connect buyers with high-quality cars and trusted services by offering a simple, honest, and customer-centered marketplace — built for car lovers and real-life drivers alike.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="row g-4 mt-4">
-        <div class="col-md-6">
-            <div class="p-4 border rounded-3 bg-white shadow">
-                <h3 class="mb-3">Our Values</h3>
-                <ul class="list-unstyled">
-                    <li>✔️ Integrity</li>
-                    <li>✔️ Quality Content</li>
-                    <li>✔️ Accessibility</li>
-                    <li>✔️ Supporting Arabic Culture</li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="p-4 border rounded-3 bg-white shadow">
-                <h3 class="mb-3">Contact Us</h3>
-                <p><strong>Email:</strong> info@example.com</p>
-                <p><strong>Phone:</strong> +123-456-7890</p>
-                <p><strong>Location:</strong> Cairo, Egypt</p>
-            </div>
-        </div>
+    <div class="text-center mt-5">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
     </div>
 </div>
-

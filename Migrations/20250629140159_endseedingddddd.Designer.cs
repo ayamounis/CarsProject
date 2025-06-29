@@ -4,6 +4,7 @@ using CarsProject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarsProject.Migrations
 {
     [DbContext(typeof(CarsContext))]
-    partial class CarsContextModelSnapshot : ModelSnapshot
+    [Migration("20250629140159_endseedingddddd")]
+    partial class endseedingddddd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -627,7 +630,7 @@ namespace CarsProject.Migrations
                             Color = "White",
                             Condition = "Used",
                             Description = "High quality vehicle.",
-                            ImageUrl = "https://tse2.mm.bing.net/th/id/OIP.pPz82J8frXVoAwOZ58aHsgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
+                            ImageUrl = "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=500&q=80",
                             Name = "Audi A4 2018",
                             Price = 29900,
                             Status = "Sold",

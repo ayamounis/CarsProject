@@ -4,6 +4,7 @@ using CarsProject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarsProject.Migrations
 {
     [DbContext(typeof(CarsContext))]
-    partial class CarsContextModelSnapshot : ModelSnapshot
+    [Migration("20250629135359_endseeding")]
+    partial class endseeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -250,7 +253,7 @@ namespace CarsProject.Migrations
                             Color = "Silver",
                             Condition = "New",
                             Description = "Premium interior and design.",
-                            ImageUrl = "https://tse2.mm.bing.net/th/id/OIP.ohiuKuqks-SiNrOWW32xPAHaEY?rs=1&pid=ImgDetMain&o=7&rm=3",
+                            ImageUrl = "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=500&q=80",
                             Name = "Audi A4 2023",
                             Price = 39000,
                             Status = "Available",
@@ -393,7 +396,7 @@ namespace CarsProject.Migrations
                             Color = "Blue",
                             Condition = "Used",
                             Description = "High quality vehicle.",
-                            ImageUrl = "https://cdn.motor1.com/images/mgl/JOA6zK/s1/mini-john-cooper-works-electric-2024.jpg",
+                            ImageUrl = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80",
                             Name = "Mini Cooper 2020",
                             Price = 24500,
                             Status = "Sold",
@@ -627,7 +630,7 @@ namespace CarsProject.Migrations
                             Color = "White",
                             Condition = "Used",
                             Description = "High quality vehicle.",
-                            ImageUrl = "https://tse2.mm.bing.net/th/id/OIP.pPz82J8frXVoAwOZ58aHsgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
+                            ImageUrl = "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=500&q=80",
                             Name = "Audi A4 2018",
                             Price = 29900,
                             Status = "Sold",
